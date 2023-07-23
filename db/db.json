@@ -1,1 +1,22 @@
-[]
+[
+    {
+      "title": "Test Title",
+      "text": "Test text",
+      "id": "test_id"
+    },
+    {
+      "title": "Monday",
+      "text": "express.js study time - use learned resources to study",
+      "id": 2
+    },
+    {
+      "title": "Tuesday",
+      "text": "do the laundry and sort clothes for donation",
+      "id": 3
+    },
+    {
+      "title": "Wednesday",
+      "text": "look up recipes for overnight oats and make breakfast plan",
+      "id": 3
+    }
+  ]
