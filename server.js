@@ -10,12 +10,13 @@ app.use(express.static("public"));
 // Middleware to parse the JSON data
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
-// PORT
+// Use the router for API routes
+app.use("/api", apiRoutes); 
+
 app.listen(PORT, () => {
-    console.log(`App listening on PORT ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
 
 module.exports = app;

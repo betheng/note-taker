@@ -4,6 +4,8 @@ const util = require("util");
 const app = require("express").Router();
 const writeFileAsync = util.promisify(fs.writeFile);
 const readFileAsync = util.promisify(fs.readFile);
+const express = require("express");
+const router = express.Router();
 var notesDataFormat;
 
 // read contents of the "db.json" file, parse it as JSON, send JSON data back to client as a response
