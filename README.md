@@ -22,7 +22,7 @@
  1. Clone and open repo in VS Code or other IDE
  2. Install node.js v16, Run 'npm i' to install dependencies
  3. Install Express.js by running the command 'npm init -y' and 'npm i express'
- 4. Within the terminal type 'node index.js' to run program
+ 4. Within the terminal type 'node app.js' to run program
  5. Download Heroku
  6. Create and deploy application through Heroku: enter the command 'heroku create <app-name>' via CLI
 
