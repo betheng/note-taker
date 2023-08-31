@@ -1,15 +1,15 @@
 // required filesnpm init
 const fs = require("fs");
 const util = require("util");
-const app = require("express").Router();
-const writeFileAsync = util.promisify(fs.writeFile);
-const readFileAsync = util.promisify(fs.readFile);
 const express = require("express");
 const router = express.Router();
+const writeFileAsync = util.promisify(fs.writeFile);
+const readFileAsync = util.promisify(fs.readFile);
+
 var notesDataFormat;
 
 // read contents of the "db.json" file, parse it as JSON, send JSON data back to client as a response
-app.get("/notes", (req, res) => {
+router.get("/notes", (req, res) => {
   readFileAsync("db/db.json", "utf8").then(function (data) {
     notesDataFormat = JSON.parse(data);
     res.json(notesDataFormat);
@@ -17,7 +17,7 @@ app.get("/notes", (req, res) => {
 });
 
 // read existing notes from "db.json" file, add new note to the list, write updated list of notes back to file
-app.post("/notes", (req, res) => {
+router.post("/notes", (req, res) => {
   readFileAsync("db/db.json", "utf8").then(function (data) {
     notesDataFormat = JSON.parse(data);
 
@@ -29,15 +29,15 @@ app.post("/notes", (req, res) => {
 
     notesDataFormat = JSON.stringify(notesDataFormat);
 
-    writeFileAsync("db/db.json", notesDataFormat).then(function (data) {
+    writeFileAsync("db/db.json", notesDataFormat).then(function () {
       console.log("Note has been added.");
+      res.json(newNote); // Send back the newNote as the response
     });
-    res.json(notesDataFormat);
   });
 });
 
 // search for note ID in the notesDataFormat array, delete it from the array, update the "db.json" file with the modified array, respond with the updated array of notes
-app.delete("/notes/:id", (req, res) => {
+router.delete("/notes/:id", (req, res) => {
   let selID = parseInt(req.params.id);
   for (let i = 0; i < notesDataFormat.length; i++) {
     if (selID === notesDataFormat[i].id) {
